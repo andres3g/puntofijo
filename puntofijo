@@ -1,0 +1,24 @@
+function PuntoFijo
+fprintf('Programa que realiza punto fijo');
+gx = input('Ingrese la funcion igualada a x: ', 's');
+g = inline(gx);
+x = input ('Ingrese el x inicial: ');
+maxiter = input ('ingrese el maximo de interaciones a alcanzar: ');
+error = input ('ingrese el valor tolerado: ');
+i=1;
+fprintf('i \t x \t \t error \n');
+fprintf('0 \t %f  \n' ,x);
+
+white(i <= maxiter)
+  a=x;
+  x=g(a);
+  e=abs(x-a);
+  fprintf('%d \t %1.7f \t \t %f \n',i,x,e);
+  
+  if(e < error)
+    i = maxiter+1;
+  end 
+  i=i+1;
+end
+fprintf('La aproximacion es: %1.7f con un error de: %f \n', i, x, e);
+end
