@@ -12,13 +12,13 @@ fprintf('0 \t %f  \n' ,x); %Muestra la primera x que es donde empiezan las itera
 while(i <= maxiter) % aqui solo verificamos mediante un ciclo que las iteraciones no sobrepasen las ingresadas por el usuario
   a=x; %Es un respaldo para hacer la diferencia al final
   x=g(a); %El nuevo x va a ser g(a), la funcion igualada en el x inicial
-  e=abs(x-a);
-  fprintf('%d \t %1.7f \t \t %f \n',i,x,e);
+  e=abs(x-a); %Aqui se calcula el error con valor absoluto obteniendo asi la diferencia del x antiguo con el que estaba salvado en a
+  fprintf('%d \t %1.7f \t \t %f \n',i,x,e); %imprime el numero de interaciones, la x actual y va a imprimir el error acabado de calcular
   
-  if(e < error)
-    i = maxiter+1;
-  end 
+  if(e < error) %esto es para saber si el error fue alcanzado y romper el ciclo en casos de que se cumpla
+    i = maxiter+1; %aqui convierte la i en algo mayor al numero de iteraciones posibles para acabar con el ciclo
+  end; %finaliza el condicional
   i=i+1; %suma uno al contador cuando ya se cumple una iteracion
-end
-fprintf('La aproximacion es: %1.7f con un error de: %f \n', i, x, e);
-end
+end; %Finaliza el ciclo porque ya se terminaron las iteraciones 
+fprintf('La aproximacion es: %1.7f con un error de: %f \n', i, x, e); %imprime los resultado finales tales como el numero de ciclos, la x en la que termina y el error
+end;
